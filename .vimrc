@@ -17,8 +17,14 @@ set title
 
 syntax on
 
+
 autocmd BufReadPost *
     \ if line("'\"") > 0 && line("'\"") <= line("$") |
-    \ exe "normal g`\"" |
+        \ exe "normal g`\"" |
     \ endif
 
+autocmd BufWritePost *.py
+    \ :%!yapf
+
+autocmd BufWritePost *.py
+    \ :%!isort -
