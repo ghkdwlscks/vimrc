@@ -24,7 +24,7 @@ autocmd BufReadPost *
     \ endif
 
 autocmd BufWritePost *.py
-    \ :%!yapf
+    \ :%!isort -
 
 autocmd BufWritePost *.py
-    \ :%!isort -
+    \ :%!yapf
