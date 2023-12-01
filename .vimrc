@@ -23,7 +23,7 @@ autocmd BufReadPost *
         \ exe "normal g`\"" |
     \ endif
 
-autocmd BufWritePost *.py
+autocmd BufWritePre *.py
     \ :%!isort -
 
 autocmd BufWritePost *.py
