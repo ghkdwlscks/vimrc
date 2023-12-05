@@ -20,11 +20,21 @@ syntax on
 
 autocmd BufReadPost *
     \ if line("'\"") > 0 && line("'\"") <= line("$") |
-        \ exe "normal g`\"" |
+        \ execute "normal g`\"" |
     \ endif
 
-autocmd BufWritePre *.py
-    \ :%!isort -
+function! Isort()
+    let l:winview = winsaveview()
+    execute ":silent %!isort -"
+    call winrestview(l:winview)
+endfunction
 
-autocmd BufWritePost *.py
-    \ :%!yapf
+autocmd BufWritePre *.py call Isort()
+
+function! Yapf()
+    let l:winview = winsaveview()
+    execute ":silent %!yapf"
+    call winrestview(l:winview)
+endfunction
+
+autocmd BufWritePost *.py call Yapf()
