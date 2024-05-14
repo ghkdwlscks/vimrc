@@ -4,6 +4,7 @@ filetype plugin indent on
 
 set autoindent
 set cindent
+set colorcolumn=100
 set backspace=eol,indent,start
 set expandtab
 set hlsearch
